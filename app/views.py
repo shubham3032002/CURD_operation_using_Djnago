@@ -1,3 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render  # Make sure to import render
 
-# Create your views here.
+def home(request):
+    return render(request, 'index.html')  # Render the 'index.html' template
