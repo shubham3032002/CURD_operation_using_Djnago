@@ -39,67 +39,41 @@
     <div class="container mt-5">
       <div class="row">
         <div class="col-md-4 ">
-          <h2 class="text-white bg-dark text-center p-3">Insert Student details</h2>
+          <h2 class="text-white bg-dark text-center p-3">Update Student details</h2>
 
           <br>
 
-          <form   action="/insert" method="POST" >
+
+
+          <form   action="/update/{{d.id}}" method="POST" >
             {% csrf_token %}
             <div class="from-group">
-              <input type="text" placeholder="enter the student name" name="name" class="form-control" Required>
+              <input type="text" placeholder="enter the student name" name="name" class="form-control" value={{d.name}} Required>
 
-              <input type="email" placeholder="enter the student email" name="email" class="form-control mt-2" Required>
-              <input type="number" placeholder="enter the student Age" name="age" class="form-control mt-2" Required>
+              <input type="email" placeholder="enter the student email" name="email" class="form-control mt-2" value={{d.email}} Required>
+              <input type="number" placeholder="enter the student Age" name="age" class="form-control mt-2" value={{d.age}} Required>
 
             
 
               <div class="form-group mt-2 ">
                 
                 <select id="inputState" class="form-control" name="gender"  required>
-                  <option selected>Select Gender</option>
+                  <option selected>{{d.gender}}</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                   <option value="Other">Other</option>
                 </select>
               </div>
 
-              <button type="submit" class="btn btn-info btn-lg btn-block">Submit</button>
+              <button type="submit" class="btn btn-info btn-lg btn-block">Update</button>
               
 
             </div>
           </form>
         </div>
-        <div class="col-md-8">
-          <h2 class="text-center text-white bg-dark p-2 "> Student Details</h2>
-
-          <table class="table table-light">
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Age</th>
-                <th scope="col">Gender</th>
-                <th scope="col">Edit</th>
-                <th scope="col">Delete</th>
-              </tr>
-            </thead>
-            <tbody>
-
-              {% for d in  data %}
-              <tr>
-                <th scope="row">{{d.id}}</th>
-                <td>{{d.name}}</td>
-                <td>{{d.email}}</td>
-                <td>{{d.age}}</td>
-                <td>{{d.gender}}</td>
-                <td><a button href="/update/{{d.id}}" type="button" class="btn btn-info">Edit</a></td>
-                <td><a button href="/delete/{{d.id}}" type="button" class="btn btn-danger">Delete</a></td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-        </div>
+        
+             
+        
       </div>
     </div>
 
